@@ -1,0 +1,46 @@
+package Selenium;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class AdvancedForm {
+
+	public static void main(String[] args) {
+		WebDriver driver=new ChromeDriver();
+		driver.get("https://demo.wpeverest.com/user-registration/form-3/");
+		driver.manage().window().maximize();
+		driver.findElement(By.id("first_name")).sendKeys("Saylee");
+		driver.findElement(By.id("last_name")).sendKeys("Kharat");
+		driver.findElement(By.id("user_email")).sendKeys("say@gmail.com");
+		driver.findElement(By.id("user_pass")).sendKeys("Xyzabc@123456789");
+		driver.findElement(By.id("user_confirm_password")).sendKeys("Xyzabc@123456789");
+		driver.findElement(By.xpath("//input[@id='user_url']")).sendKeys("https://sk.com");
+		driver.findElement(By.id("check_box_1530100860_Choice1")).click();
+		driver.findElement(By.name("radio_1530100861")).click();
+		
+		JavascriptExecutor scrolldown=(JavascriptExecutor) driver;
+		scrolldown.executeScript("window.scrollBy(0,500)");
+		
+		Select s=new Select(driver.findElement(By.id("country_1507714747")));
+		s.selectByVisibleText("India");
+		
+		driver.findElement(By.name("textarea_1507714757")).sendKeys("hello everyone");
+		driver.findElement(By.id("number_box_1507716030")).sendKeys("2");
+		
+		JavascriptExecutor scrolldown1=(JavascriptExecutor) driver;
+		scrolldown1.executeScript("window.scrollBy(0,200)");
+		
+		Select s1=new Select(driver.findElement(By.xpath("//select[@id='select_1507714760']")));
+		s1.selectByVisibleText("Option 2");
+		
+		driver.findElement(By.xpath("//input[@id='input_box_1507714764']")).sendKeys("please accept form");
+		driver.findElement(By.xpath("//button[normalize-space()='Submit']")).click();
+		
+		
+		driver.close();
+
+}}
